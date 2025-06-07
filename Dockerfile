@@ -5,13 +5,13 @@ FROM golang:bookworm AS builder
 WORKDIR /app
 
 # Copy go.mod and go.sum files
-COPY go.mod go.sum ./
+COPY src/go.mod src/go.sum ./
 
 # Download dependencies
 RUN go mod download
 
 # Copy the rest of the application source code
-COPY . .
+COPY src/ .
 
 # Set fixed environment variables for build
 ENV DB_PATH="db"
